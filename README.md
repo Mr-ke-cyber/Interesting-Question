@@ -54,6 +54,10 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 5.JS的核心内置类，会尝试valueOf先于toString；但有一个是例外——Date，Date利用的是toString转换。
 
 >详细解释：https://www.cnblogs.com/wenqiangit/p/9850553.html
+----
+
+2020-01-01
+# 4.
 
 
 
