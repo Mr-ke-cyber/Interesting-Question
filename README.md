@@ -17,6 +17,8 @@
 
 >没有自己的 this，无法调用 call，apply。没有 prototype 属性 ，而 new 命令在执行时需要将构造函数的 prototype 赋值给新的对象的 __proto__
 
+>详细解释：https://muyiy.cn/question/js/58.html
+
 ----
 2019-12-30
 
