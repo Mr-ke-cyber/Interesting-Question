@@ -66,7 +66,34 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 通过在浏览器中设置断点，可以观察到：
 用 let 和 const 声明的全局变量并没有在全局对象中，只是一个块级作用域（Script）中
 怎么获取？在定义变量的块级作用域中就能获取啊，既然不属于顶层对象，那就不加 window（global）呗。
+
 >详细解释：https://muyiy.cn/question/js/27.html
+----
+
+2020-01-02
+# 5. for---in 循环出来的对象属性顺序是怎么样的？
+比如 
+```javascript
+   let codes = {
+    "49": "a",
+    age: 30,
+    "41": "b",
+    name: "c",
+    isAdmin: true,
+    "1": "e"
+   };
+  for (let key in codes) {
+      console.log(key);
+  }
+  //最终遍历出来的结果是：
+  1
+  41
+  49
+  age
+  name
+  isAdmin
+
+> 使用for-in会遍历数组所有的可枚举属性，包括原型。例如上例的原型方法method和name属性都会被遍历出来，通常需要配合hasOwnProperty()方法判断某个属性是否该对象的实例属性，来将原型对象从循环中剔除。
 
 
 
