@@ -120,7 +120,7 @@ var array2 = [,,,];
 console.log(array2.indexOf(undefined) // -1
 console.log(array2.includes(undefined) // true
 ````
-
+> 详细解释：https://blog.csdn.net/wu_xianqiang/article/details/78681609
 
 
 
