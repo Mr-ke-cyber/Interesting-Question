@@ -121,7 +121,24 @@ console.log(array2.indexOf(undefined) // -1
 console.log(array2.includes(undefined) // true
 ````
 > 详细解释：https://blog.csdn.net/wu_xianqiang/article/details/78681609
+----
+2020-01-04
+# 7.下面代码会输出什么？
+````javascript
+[1, 2, 3].map(n => { number: n })
+//[undefined, undefined, undefined]
+````
+> 此题考查的是箭头函数什么时候不需要return就可以有返回值，属于es6里面比较细的知识点。我们知道，箭头函数可以有一个“简写体”或常见的“块体”。在一个简写体中，只需要一个表达式，并附加一个隐式的返回值，而在块体中，必须使用明确的return语句。
+> 在箭头函数中用简单的语法返回对象字面量这种方式是行不通的，因为花括号（{}）里面的代码被解析为一系列语句，因此，如果想要实现简写，可以用圆括号把对象字面量给包起来。
+例如：
 
+````
+let result = [1, 2, 3].map(n => ({number:n}));  //[{number:1}, {number:2}, {number:3}]
+也可以这样：
+let result = [1, 2, 3].map(n => (function(){return n})());  //[1, 2, 3]
+````
+----
+2020-01-05
 
 
 
