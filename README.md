@@ -17,7 +17,7 @@
 
 >没有自己的 this，无法调用 call，apply。没有 prototype 属性 ，而 new 命令在执行时需要将构造函数的 prototype 赋值给新的对象的 __proto__
 
->详细解释：https://muyiy.cn/question/js/58.html
+>更详细解释，可参考：https://muyiy.cn/question/js/58.html
 
 ----
 2019-12-30
@@ -38,7 +38,7 @@
 
 因此，Brendan Eich又设计了一个undefined。
 
->详细解释：http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html
+>更详细解释，可参考：http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html
 
 ----
 2019-12-31
@@ -55,7 +55,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 4.如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。
 5.JS的核心内置类，会尝试valueOf先于toString；但有一个是例外——Date，Date利用的是toString转换。
 
->详细解释：https://www.cnblogs.com/wenqiangit/p/9850553.html
+>更详细解释，可参考：https://www.cnblogs.com/wenqiangit/p/9850553.html
 ----
 
 2020-01-01
@@ -67,7 +67,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 用 let 和 const 声明的全局变量并没有在全局对象中，只是一个块级作用域（Script）中
 怎么获取？在定义变量的块级作用域中就能获取啊，既然不属于顶层对象，那就不加 window（global）呗。
 
->详细解释：https://muyiy.cn/question/js/27.html
+>更详细解释，可参考：https://muyiy.cn/question/js/27.html
 ----
 
 2020-01-02
@@ -102,7 +102,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 
 > 其实这道题考查的知识点特别细，个人感觉没多大必要，因为我们很少在 for...in 中做依赖对象属性顺序的逻辑判断的,但是在实际面试过程中是真实遇到过的。如果想要依赖对象属性做逻辑判断，可以将属性按照你想要的顺序放进数组里，然后再依次遍历。
 
-> 参考解释：https://blog.csdn.net/JEFF_luyiduan/article/details/100532371
+> 更详细解释，可参考：https://blog.csdn.net/JEFF_luyiduan/article/details/100532371
 
 ----
 2020-01-03  
@@ -120,7 +120,7 @@ var array2 = [,,,];
 console.log(array2.indexOf(undefined) // -1
 console.log(array2.includes(undefined) // true
 ````
-> 详细解释：https://blog.csdn.net/wu_xianqiang/article/details/78681609
+> 更详细解释，可参考：https://blog.csdn.net/wu_xianqiang/article/details/78681609
 ----
 2020-01-04
 # 7.下面代码会输出什么？
@@ -137,6 +137,7 @@ let result = [1, 2, 3].map(n => ({number:n}));  //[{number:1}, {number:2}, {numb
 也可以这样：
 let result = [1, 2, 3].map(n => (function(){return n})());  //[1, 2, 3]
 ````
+> 更详细解释，可参考：https://blog.csdn.net/github_39319000/article/details/89472033
 ----
 2020-01-05
 
