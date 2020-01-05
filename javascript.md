@@ -140,7 +140,18 @@ let result = [1, 2, 3].map(n => (function(){return n})());  //[1, 2, 3]
 > 更详细解释，可参考：https://blog.csdn.net/github_39319000/article/details/89472033
 ----
 2020-01-05
-
+# 8.分别写出如下代码的返回值
+```` javascript
+String('11') == new String('11'); //true
+String('11') === new String('11'); // false
+````
+> 当String() 和运算符 new 一起作为构造函数使用时，它返回一个新创建的String对象，存放的是字符串s或s的字符串表示。
+> 当不用new运算符调用String()时，它只把s转换成原始的字符串，并返回转换后的值。
+所以String()返回的是字符串，new String()返回的是对象。
+> 更详细解释，可参考：https://muyiy.cn/question/js/106.html
+----
+2020-01-06
+ # 9.--
 
 
 
