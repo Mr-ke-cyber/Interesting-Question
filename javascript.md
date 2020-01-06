@@ -151,7 +151,8 @@ String('11') === new String('11'); // false
 > 更详细解释，可参考：https://muyiy.cn/question/js/106.html
 ----
 2020-01-06
- # 9.--
+ # 9.对Promise掌握有多少？可通过八段代码了解透彻。
+ >可参考https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
 
 
 
