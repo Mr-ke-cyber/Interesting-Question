@@ -150,16 +150,16 @@ String('11') === new String('11'); // false
 ----
 2020-01-06
  # 9.对Promise掌握有多少？可通过八段代码了解透彻。  
- > 主要总结：
- ①Promise是立即执行的，立即执行性。
- ②Promise具备三种状态，pending/resolved/rejected。
- ③Promise的状态时不可逆的，即当promise的状态一旦变成了resolved或reject时，Promise的状态和值就固定下来了，不论你后续再怎么调用resolve或者reject方法，都不能改变它的状态和值。
- ④Promise对象的then方法返回一个新的Promise对象，因此可以通过链式调用then方法。then方法接收两个函数作为参数，第一个参数是Promise执行成功时的回调，第二个参数是Promise执行失败时的回调。两个函数只会有一个被调用，函数的返回值将被用作创建then返回的Promise对象。
- ⑤Promise接收的函数参数是同步执行的，但是then方法中的回调函数执行则是异步的。
- ⑥Promise中的异常由then参数中第二个回调函数（Promise执行失败的回调）处理，异常信息将作为Promise的值。异常一旦得到处理，then返回的后续Promise对象将恢复正常，并会被Promise执行成功的回调函数处理。
- ⑦Promise.resolve(---)可以接收一个值或者是一个Promise对象作为参数。当参数是普通值时，它返回一个resolved状态的Promise对象，对象的值就是这个参数。当参数是一个Promise对象时，它直接返回这个Promise参数。
+ > 主要总结：  
+ ①Promise是立即执行的，立即执行性。  
+ ②Promise具备三种状态，pending/resolved/rejected。  
+ ③Promise的状态时不可逆的，即当promise的状态一旦变成了resolved或reject时，Promise的状态和值就固定下来了，不论你后续再怎么调用resolve或者reject方法，都不能改变它的状态和值。  
+ ④Promise对象的then方法返回一个新的Promise对象，因此可以通过链式调用then方法。then方法接收两个函数作为参数，第一个参数是Promise执行成功时的回调，第二个参数是Promise执行失败时的回调。两个函数只会有一个被调用，函数的返回值将被用作创建then返回的Promise对象。  
+ ⑤Promise接收的函数参数是同步执行的，但是then方法中的回调函数执行则是异步的。  
+ ⑥Promise中的异常由then参数中第二个回调函数（Promise执行失败的回调）处理，异常信息将作为Promise的值。异常一旦得到处理，then返回的后续Promise对象将恢复正常，并会被Promise执行成功的回调函数处理。  
+ ⑦Promise.resolve(---)可以接收一个值或者是一个Promise对象作为参数。当参数是普通值时，它返回一个resolved状态的Promise对象，对象的值就是这个参数。当参数是一个Promise对象时，它直接返回这个Promise参数。  
  ⑧Promise回调函数中的第一个参数resolve，会对Promise执行“拆箱”操作。当resolve的参数是一个Promise对象时，resolve会“拆箱”获取这个Promise对象的状态和值，但这个过程是异步的。
- 但是在Promise回调函数中，第二个参数reject不具备“拆箱”的能力，reject的参数会直接传递给then方法中的rejected回调，可以理解为这个过程是同步立即执行的。
+ 但是在Promise回调函数中，第二个参数reject不具备“拆箱”的能力，reject的参数会直接传递给then方法中的rejected回调，可以理解为这个过程是同步立即执行的。  
  
  > 更详细解释，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
  ----
