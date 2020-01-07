@@ -144,7 +144,7 @@ String('11') == new String('11'); //true
 String('11') === new String('11'); // false
 ````
 > 当String() 和运算符 new 一起作为构造函数使用时，它返回一个新创建的String对象，存放的是字符串s或s的字符串表示。
-> 当不用new运算符调用String()时，它只把s转换成原始的字符串，并返回转换后的值。
+> 当不用new运算符调用String()时，它只把s转换成原始的字符串，并返回转换后的值。``
 所以String()返回的是字符串，new String()返回的是对象。  
 > 更详细解释，可参考：https://muyiy.cn/question/js/106.html
 ----
@@ -160,12 +160,46 @@ String('11') === new String('11'); // false
  ⑦Promise.resolve(---)可以接收一个值或者是一个Promise对象作为参数。当参数是普通值时，它返回一个resolved状态的Promise对象，对象的值就是这个参数。当参数是一个Promise对象时，它直接返回这个Promise参数。  
  ⑧Promise回调函数中的第一个参数resolve，会对Promise执行“拆箱”操作。当resolve的参数是一个Promise对象时，resolve会“拆箱”获取这个Promise对象的状态和值，但这个过程是异步的。
  但是在Promise回调函数中，第二个参数reject不具备“拆箱”的能力，reject的参数会直接传递给then方法中的rejected回调，可以理解为这个过程是同步立即执行的。  
- 
+ 注意：  
+ Promise.resolve('成功')等同于 new Promise(function(resolve){resolve('成功')）})    
+ Promise.reject('出错了')等同于 new Promise((resolve, reject) => reject('出错了')
  > 更详细解释，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
  ----
  2020-01-07
- # 10.
-
+ # 10. Promise.all和Promise.race的区别和相同点？
+ race方法与all方法类似，都可以将多个Promise实例包装成一个新的Promise实例
+ 不同点：在使用all方法时大Promise的状态由多个小Promise共同决定，而race方法则由第一个转变状态的小Promise的状态决定，第一个若是成功态，则转成功态，第一个若是失败态，则转失败态。
+ 来看下面两个例子：
+ ````javascript
+ let p1 = new Promise((resolve, reject) => {
+     resolve('成功了')
+ });
+ 
+ let p2 = new Promise((resolve, reject) => {
+     resolve('success')
+ });
+ 
+ let p3 = Promise.reject('失败');
+ 
+ Promise.all([p1, p2]).then((result) => {
+     console.log(result)               //['成功了', 'success']
+ }).catch((error) => {
+     console.log(error)
+ });
+ 
+ Promise.all([p1,p3,p2]).then((result) => {
+     console.log(result)   
+ }).catch((error) => {
+     console.log(error)  //失败
+ });
+ 
+ Promise.race([p1,p3,p2]).then((result) => {
+     console.log(result)   // 成功了
+ }).catch((error) => {
+     console.log(error)
+ });
+````
+> 更详细解释，可参考：https://juejin.im/post/5ab20c58f265da23a228fe0f#heading-2
 
 
 
