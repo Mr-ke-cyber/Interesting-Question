@@ -200,12 +200,25 @@ String('11') === new String('11'); // false
  });
 ````
 > 更详细解释，可参考：https://juejin.im/post/5ab20c58f265da23a228fe0f#heading-2
+----
+2020-01-08
+# 11.什么是暂时性死区？（今天非常之忙，需要开会及评审需求，还有个需求周五要提测，故以温故为主）
+ 
+暂时性死区是指在使用let声明变量之前，该变量都是不可用的。在语法上，成为“暂时性死区”。（temporal dead zone）
+只要块级作用域存在let命令，它所声明的变量就“绑定”这个区域，不再受外部的影响。这么说可能有些抽象，举个例子：
+````javascript
+var temp = 123;
+if(true) {
+    console.log(temp);
+    let temp;
+}
 
+结果：
+> ReferenceError: temp is not defined
+````
+> ES6规定暂时性死区和let、const语句不出现变量提升，主要是为了减少运行时错误，防止在变量声明前就使用这个变量，从而导致意料之外的行为。
 
-
-
-
-
+> 更详细解释，可参考：https://segmentfault.com/a/1190000018113011
 
 
 
