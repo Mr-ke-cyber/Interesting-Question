@@ -162,7 +162,7 @@ String('11') === new String('11'); // false
  但是在Promise回调函数中，第二个参数reject不具备“拆箱”的能力，reject的参数会直接传递给then方法中的rejected回调，可以理解为这个过程是同步立即执行的。    
  注意：  
  Promise.resolve('成功')等同于 new Promise(function(resolve){resolve('成功')）})    
- Promise.reject('出错了')等同于 new Promise((resolve, reject) => reject('出错了')
+ Promise.reject('出错了')等同于 new Promise((resolve, reject) => reject('出错了')  
  > 更详细解释，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
  ----
  2020-01-07
