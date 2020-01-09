@@ -246,7 +246,7 @@ function clone(target, map = new WeakMap()) {
 ````
 > 更详细解释，可参考：https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-3  
 ----
-2010-01-11
+2010-01-10
 WeakMap 和 Map的区别
 
 
