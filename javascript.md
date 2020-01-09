@@ -219,6 +219,33 @@ if(true) {
 > ES6规定暂时性死区和let、const语句不出现变量提升，主要是为了减少运行时错误，防止在变量声明前就使用这个变量，从而导致意料之外的行为。
 
 > 更详细解释，可参考：https://segmentfault.com/a/1190000018113011
+----
+2010-01-09
+# 12.深拷贝和浅拷贝的区别在哪？什么样的深拷贝才算合格？能不能手写一个深拷贝出来？
+这道题可以说非常常见，但常见并不一定代表吃透了。
+先来回答区别，最根本区别在于是否真正获取了一个对象的复制实体，而不是引用。我们知道，对象是引用数据类型，引用数据类型的值实际存储在堆内存中，它在栈中只存储了一个固定长度的地址，这个地址指向堆内存中的值，浅拷贝只是拷贝了它的地址。 如果原地址存储的对象发生改变，那么所有浅拷贝出来的对象会跟着改变。 
+深拷贝则是将一个对象从内存中完整的拷贝一份出来，从堆内存中开辟一个新的区域来存放新对象，且修改新对象不会影响原对象。  
+合格的深拷贝，应该考虑的多个方面，主要包括考虑数组、循环引用、克隆函数、性能优化等方面综合考虑。手写一个深拷贝如下：
+````javascript
+function clone(target, map = new WeakMap()) {
+    if (typeof target === 'object') {
+        let cloneTarget = Array.isArray(target) ? [] : {};
+        if (map.get(target)) {
+            return map.get(target);
+        }
+        map.set(target, cloneTarget);
+        for (const key in target) {
+            cloneTarget[key] = clone(target[key], map);
+        }
+        return cloneTarget;
+    } else {
+        return target;
+    }
+}
+````
+> 更详细解释，可参考：https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-3
+WeakMap 和 Map的区别
+
 
 
 
