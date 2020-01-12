@@ -366,7 +366,7 @@ const jsonObj = {
 JSON.stringify(jsonObj, ["params"]);
 // "{"params":"obj,replacer,space"}" 
 ````
-
+> 更详细解释，可参考：https://juejin.im/post/5decf09de51d45584d238319
 
 
 
