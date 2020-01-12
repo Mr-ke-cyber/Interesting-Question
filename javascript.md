@@ -166,7 +166,7 @@ String('11') === new String('11'); // false
  > 更详细解释，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
  ----
  2020-01-07
- # 10. Promise.all和Promise.race的区别和相同点？
+ # 10. Promise.all和Promise.race的区别和相同点？Promise.finally又是啥？
  race方法与all方法类似，都可以将多个Promise实例包装成一个新的Promise实例
  不同点：在使用all方法时大Promise的状态由多个小Promise共同决定，而race方法则由第一个转变状态的小Promise的状态决定，第一个若是成功态，则转成功态，第一个若是失败态，则转失败态。
  来看下面两个例子：
@@ -198,6 +198,26 @@ String('11') === new String('11'); // false
  }).catch((error) => {
      console.log(error)
  });
+````
+Promise.finally方法用于指定不管Promise对象最后状态如何，都会执行的操作，使用方法如下：
+````javascript
+Promise
+	.then(result => { ··· })
+	.catch(error => { ··· })
+	.finally(() => { ··· })
+````
+finally特点：
+* 不接受任何参数。
+* finally本质上是then方法的特例。
+````javascript
+Promise.prototype.finally = function (callback) {
+  let P = this.constructor
+  return this.then(
+    value  => P.resolve(callback()).then(() => value),
+    reason => P.resolve(callback()).then(() => { throw reason })
+  )
+}
+
 ````
 > 更详细解释，可参考：https://juejin.im/post/5ab20c58f265da23a228fe0f#heading-2
 ----
