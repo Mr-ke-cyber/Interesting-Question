@@ -367,11 +367,64 @@ JSON.stringify(jsonObj, ["params"]);
 // "{"params":"obj,replacer,space"}" 
 ````
 > 更详细解释，可参考：https://juejin.im/post/5decf09de51d45584d238319
+----
+2020-01-13
+# 16. js中有几种原生数据类型？ES6新增的symbol数据类型了解有多少？
+说到原生数据类型，我们通常想到的有这6种：number、string、undefined、null、boolean、object,但在es6中新增了一种原生数据类型Symbol,在谷歌67版本中还出现了一种bigInt类型的数据，它是指安全存储、操作的大整数。
+今天来学习一下Symbol.  
+* 1.Symbol的作用非常的专一，换句话来说其设计出来的主要目的是，**作为对象属性的唯一标识符**，防止对象属性冲突发生。那么Symbol值通过Symbol函数生成，例如：
+````javascript
+let s = Symbol();
+typeof s // symbol
+````
+* 2.上面的代码表示创建一个Symbol变量，值得注意的是，**Symbol函数前不能使用new命令**，否则会报错，也就是说Symbol是一个原始数据类型的值，不是对象，也不能添加属性；  
+Symbol函数可以接受一个字符串作为参数来表示对Symbol实例的描述，主要用于区分不同的Symbol变量；  
+````javascript
+let s1 = Symbol('a');
+let s2 = Symbol('b');
 
+s1.toString()  // 'Symbol(a)'
+s2.toString()  // 'Symbol(b)'
+s1 == s2 //false
+````
+* 3.Symbol函数的参数只是表示对当前Symbol值的描述，即使相同参数的Symbol函数的返回值依然是不相等的。  
+* 4.Symbol值不能与其他类型的值进行运算，但是可以转为布尔值，却不能转为数值。  
+* 5.Symbol用于对象的属性名时，可以保证不会出现同名的属性，对于一个对象由多个模块构成的情况非常有用，能防止某一个键被不小心改写或者覆盖；**特别注意**的是，Symbol值作为对象的属性名时，不能用点运算符，因为点运算符后面是一个字符串；  
+* 6.Symbol 作为属性名，不会被常规方法遍历得到，即该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回，但是，它并不是私有属性，可以使用 Object.getOwnPropertySymbols 方法，可以获取指定对象的所有 Symbol 属性名；
+````javascript
+var obj = {};
+var a = Symbol('a');
+var b = Symbol('b');
 
+obj[a] = 'Hello';
+obj[b] = 'World';
+obj.c  = 'Mine';
 
+for( let key in obj ){
+   console.log(key)         // c
+}
 
+var objectSymbols = Object.getOwnPropertySymbols(obj);
 
+console.log(objectSymbols) // [Symbol(a), Symbol(b)]
+````
+7.Symbol.for方法接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值；它与Symbol()不同的是，Symbol.for()不会每次调用就返回一个新的 Symbol 类型的值，而是会先检查给定的key是否已经存在，如果不存在才会新建一个值，而 Symbol()每次都会返回3不同的Symbol值；
+````javascript
+Symbol.for("name") === Symbol.for("name")
+// true
+
+Symbol("name") === Symbol("name")
+// false
+````
+**注意：** Symbol.for为Symbol值登记的名字，是全局环境的，可以在不同的 iframe 或 service worker 中取到同一个值
+8.Symbol.keyFor方法返回一个已登记的 Symbol 类型值的key，而Symbol()写法是没有登记机制的；
+````javascript
+var s1 = Symbol.for("name");
+Symbol.keyFor(s1) // "name"
+
+var s2 = Symbol("name");
+Symbol.keyFor(s2) // undefined
+````
 
 
 
