@@ -408,7 +408,7 @@ var objectSymbols = Object.getOwnPropertySymbols(obj);
 
 console.log(objectSymbols) // [Symbol(a), Symbol(b)]
 ````
-7.Symbol.for方法接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值；它与Symbol()不同的是，Symbol.for()不会每次调用就返回一个新的 Symbol 类型的值，而是会先检查给定的key是否已经存在，如果不存在才会新建一个值，而 Symbol()每次都会返回3不同的Symbol值；
+* 7.Symbol.for方法接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值；它与Symbol()不同的是，Symbol.for()不会每次调用就返回一个新的 Symbol 类型的值，而是会先检查给定的key是否已经存在，如果不存在才会新建一个值，而 Symbol()每次都会返回3不同的Symbol值；
 ````javascript
 Symbol.for("name") === Symbol.for("name")
 // true
@@ -417,7 +417,7 @@ Symbol("name") === Symbol("name")
 // false
 ````
 **注意：** Symbol.for为Symbol值登记的名字，是全局环境的，可以在不同的 iframe 或 service worker 中取到同一个值
-8.Symbol.keyFor方法返回一个已登记的 Symbol 类型值的key，而Symbol()写法是没有登记机制的；
+* 8.Symbol.keyFor方法返回一个已登记的 Symbol 类型值的key，而Symbol()写法是没有登记机制的；
 ````javascript
 var s1 = Symbol.for("name");
 Symbol.keyFor(s1) // "name"
