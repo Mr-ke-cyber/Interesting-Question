@@ -425,7 +425,7 @@ Symbol.keyFor(s1) // "name"
 var s2 = Symbol("name");
 Symbol.keyFor(s2) // undefined
 ````
-
+> 更详细解释，可参考: https://www.jianshu.com/p/4da037782be9
 
 
 
