@@ -109,8 +109,8 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 > indexOf返回的是查找元素的位置，即number型的，而includes返回的是布尔值，判断是否包含想查询的元素。
 > 这两个方法不传入参数的时候，默认其传入的参数为undefined,都可以支持第二个参数，而且第二个参数都支持负数形式。第二个参数是可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是0到stringObject.length - 1。如果省略该参数，则将从字符串的首字符开始检索。
 > indexOf不能判断NaN,判断稀疏数组结果不同  
-
-**注意** indexOf对大小写敏感
+> 这两者均能判断undefined null  “ ”（空字符串）
+**注意** 这两个方法都对大小写敏感
 ```` javascript
 var array = [NaN];
 console.log(array.indexOf(NaN) //-1
