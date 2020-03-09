@@ -170,7 +170,7 @@ String('11') === new String('11'); // false
  2020-01-07
  # 10. Promise.all和Promise.race的区别和相同点？Promise.finally又是啥？
  race方法与all方法类似，都可以将多个Promise实例包装成一个新的Promise实例
- 不同点：在使用all方法时大Promise的状态由多个小Promise共同决定，而race方法则由第一个转变状态的小Promise的状态决定，第一个若是成功态，则转成功态，第一个若是失败态，则转失败态。
+ 不同点：在使用all方法时大Promise的状态由多个小Promise共同决定，所有的小promise都成功了，则为成功态。若有一个promise失败，则为失败态。而race方法则由第一个转变状态的小Promise的状态决定，第一个若是成功态，则转成功态，第一个若是失败态，则转失败态。
  来看下面两个例子：
  ````javascript
  let p1 = new Promise((resolve, reject) => {
