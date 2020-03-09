@@ -15,7 +15,7 @@
 
 >没有自己的 this，它只会从自己的作用域链的上一层继承this, 任何方法都改变不了其指向，无法调用 call，apply，bind。没有 prototype 属性 ，而 new 命令在执行时需要将构造函数的 prototype 赋值给新的对象的 __proto__
 
->更详细解释，可参考：https://muyiy.cn/question/js/58.html
+>更详细的资料，可参考：https://muyiy.cn/question/js/58.html
 
 ----
 2019-12-30
@@ -36,7 +36,7 @@
 
 因此，Brendan Eich又设计了一个undefined。
 
->更详细解释，可参考：http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html
+>更详细的资料，可参考：http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html
 
 ----
 2019-12-31
@@ -53,7 +53,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 4.如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。
 5.JS的核心内置类，会尝试valueOf先于toString；但有一个是例外——Date，Date利用的是toString转换。
 
->更详细解释，可参考：https://www.cnblogs.com/wenqiangit/p/9850553.html
+>更详细的资料，可参考：https://www.cnblogs.com/wenqiangit/p/9850553.html
 ----
 
 2020-01-01
@@ -65,7 +65,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 用 let 和 const 声明的全局变量并没有在全局对象中，只是一个块级作用域（Script）中
 怎么获取？在定义变量的块级作用域中就能获取啊，既然不属于顶层对象，那就不加 window（global）呗。
 
->更详细解释，可参考：https://muyiy.cn/question/js/27.html
+>更详细的资料，可参考：https://muyiy.cn/question/js/27.html
 ----
 
 2020-01-02
@@ -100,7 +100,7 @@ Object.is()是es6新增的用来比较两个值是否严格相等的方法，与
 
 > 其实这道题考查的知识点特别细，个人感觉没多大必要，因为我们很少在 for...in 中做依赖对象属性顺序的逻辑判断的,但是在实际面试过程中是真实遇到过的。如果想要依赖对象属性做逻辑判断，可以将属性按照你想要的顺序放进数组里，然后再依次遍历。
 
-> 更详细解释，可参考：https://blog.csdn.net/JEFF_luyiduan/article/details/100532371
+> 更详细的资料，可参考：https://blog.csdn.net/JEFF_luyiduan/article/details/100532371
 
 ----
 2020-01-03  
@@ -120,7 +120,7 @@ var array2 = [,,,];
 console.log(array2.indexOf(undefined) // -1
 console.log(array2.includes(undefined) // true
 ````
-> 更详细解释，可参考：https://blog.csdn.net/wu_xianqiang/article/details/78681609
+> 更详细的资料，可参考：https://blog.csdn.net/wu_xianqiang/article/details/78681609
 ----
 2020-01-04
 # 7.下面代码会输出什么？
@@ -137,7 +137,7 @@ let result = [1, 2, 3].map(n => ({number:n}));  //[{number:1}, {number:2}, {numb
 也可以这样：
 let result = [1, 2, 3].map(n => (function(){return n})());  //[1, 2, 3]
 ````
-> 更详细解释，可参考：https://blog.csdn.net/github_39319000/article/details/89472033
+> 更详细的资料，可参考：https://blog.csdn.net/github_39319000/article/details/89472033
 ----
 2020-01-05
 # 8.分别写出如下代码的返回值
@@ -148,7 +148,7 @@ String('11') === new String('11'); // false
 > 当String() 和运算符 new 一起作为构造函数使用时，它返回一个新创建的String对象，存放的是字符串s或s的字符串表示。
 > 当不用new运算符调用String()时，它只把s转换成原始的字符串，并返回转换后的值。``
 所以String()返回的是字符串，new String()返回的是对象。  
-> 更详细解释，可参考：https://muyiy.cn/question/js/106.html
+> 更详细的资料，可参考：https://muyiy.cn/question/js/106.html
 ----
 2020-01-06
  # 9.对Promise掌握有多少？可通过八段代码了解透彻。  
@@ -165,7 +165,7 @@ String('11') === new String('11'); // false
  注意：  
  Promise.resolve('成功')等同于 new Promise(function(resolve){resolve('成功')）})    
  Promise.reject('出错了')等同于 new Promise((resolve, reject) => reject('出错了')  
- > 更详细解释，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
+ > 更详细的资料，可参考：https://juejin.im/post/597724c26fb9a06bb75260e8 并逐段代码练习。
  ----
  2020-01-07
  # 10. Promise.all和Promise.race的区别和相同点？Promise.finally又是啥？
@@ -221,11 +221,10 @@ Promise.prototype.finally = function (callback) {
 }
 
 ````
-> 更详细解释，可参考：https://juejin.im/post/5ab20c58f265da23a228fe0f#heading-2
+> 更详细的资料，可参考：https://juejin.im/post/5ab20c58f265da23a228fe0f#heading-2
 ----
 2020-01-08
 # 11.什么是暂时性死区？
-（今天非常之忙，需要开会及评审需求，还有个需求周五要提测，故以温故为主）  
 暂时性死区是指在使用let声明变量之前，该变量都是不可用的。在语法上，成为“暂时性死区”。（temporal dead zone）
 只要块级作用域存在let命令，它所声明的变量就“绑定”这个区域，不再受外部的影响。这么说可能有些抽象，举个例子：
 ````javascript
@@ -240,7 +239,7 @@ if(true) {
 ````
 > ES6规定暂时性死区和let、const语句不出现变量提升，主要是为了减少运行时错误，防止在变量声明前就使用这个变量，从而导致意料之外的行为。
 
-> 更详细解释，可参考：https://segmentfault.com/a/1190000018113011
+> 更详细的资料，可参考：https://segmentfault.com/a/1190000018113011
 ----
 2020-01-09
 # 12.深拷贝和浅拷贝的区别在哪？什么样的深拷贝才算合格？能不能手写一个深拷贝出来？
@@ -266,7 +265,7 @@ function clone(target, map = new WeakMap()) {
     }
 }
 ````
-> 更详细解释，可参考：https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-3  
+> 更详细的资料，可参考：https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-3  
 ----
 2020-01-10
 # 13. ES6中的Set、Map、WeakSet和WeakMap的相同点与不同点都有哪些？
@@ -288,7 +287,7 @@ WeakSet 与 Set 的区别：
 
 注意：**WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用。**  
 WeakMap 中，每个键对自己所引用对象的引用都是弱引用，在没有其他引用和该键引用同一对象，这个对象将会被垃圾回收（相应的key则变成无效的），所以，WeakMap 的 key 是不可枚举的。
-> 更详细解释，可参考：https://blog.csdn.net/duyujian706709149/article/details/96310651   
+> 更详细的资料，可参考：https://blog.csdn.net/duyujian706709149/article/details/96310651   
 ----
 2020-01-11
 # 14. JavaScript中的垃圾回收和内存泄漏了解多少？
@@ -368,7 +367,7 @@ const jsonObj = {
 JSON.stringify(jsonObj, ["params"]);
 // "{"params":"obj,replacer,space"}" 
 ````
-> 更详细解释，可参考：https://juejin.im/post/5decf09de51d45584d238319
+> 更详细的资料，可参考：https://juejin.im/post/5decf09de51d45584d238319
 ----
 2020-01-13
 # 16. js中有几种原生数据类型？ES6新增的symbol数据类型了解有多少？
@@ -427,7 +426,7 @@ Symbol.keyFor(s1) // "name"
 var s2 = Symbol("name");
 Symbol.keyFor(s2) // undefined
 ````
-> 更详细解释，可参考: https://www.jianshu.com/p/4da037782be9
+> 更详细的资料，可参考: https://www.jianshu.com/p/4da037782be9
 ----
 2020-01-30
 # 17. js中Number.MAX_SAFE_INTEGER和Number.MAX_VALUE有什么区别?这两个参数的作用体现在哪里？
@@ -436,25 +435,25 @@ Number.MAX_SAFE_INTEGER 是可以在计算中安全使用的最大整数，由�
 例如， Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2 为true - 任何大于MAX_SAFE_INTEGER的整数都不能始终准确地在内存中表示。所有位用于表示数字的数字。
 另一方面，Number.MAX_VALUE 是使用双精度浮点表示表示的最大数字。一般来说，数字越大，准确度越低。  
 Number.MAX_VALUE则表示js里最大的数值，比这更大的表示Infinity，与之相应的是Number.MIN_VALUE。这两个是最早的JS标准ECMAScript 262 1st Edition就有的。
-> 更详细解释，可参考: https://www.zhihu.com/question/36680964/answer/68561445
+> 更详细的资料，可参考: https://www.zhihu.com/question/36680964/answer/68561445
 ---
 2020-02-27
 # 18. 数组的sort方法是作用于原数组（即改变了原数组）还是不改变原数组？内部原理是啥？
 sort方法是作用于原数组的，会对原数组排序，默认是将待排序数据转换为字符串，并按照Unicode序列排序；当然，比较函数可以自定义，自定义排序函数需要返回值，其返回值为-1，0，1，分别表示a<b, a=b, a>b.
 其内部原理主要为：当数组长度小于等于10的时候，采用插入排序，大于10的时候，采用快排。对于长度大于1000的数组，采用的是快排与插入排序混合的方式进行排序的，因为，当数据量很小的时候，插入排序效率优于快排。
 快排的平均时间复杂度是nlogn，在排序算法中属于效率最高的。快排是一种不稳定的排序算法，但是一般情况下稳定或者不稳定对我们没有特别大的影响，但是对稳定性要求高的排序，就不能使用快排了。
-> 更详细解释，可参考: https://zhuanlan.zhihu.com/p/33626637
+> 更详细的资料，可参考: https://zhuanlan.zhihu.com/p/33626637
 ---
 2020-02-28
 # 19. 在js中为什么0.1 + 0.2不等于0.3?
 这是因为，在计算机中所有的数据都是以二进制存储的，所以在计算时计算机要把数据先转换成二进制进行计算，然后在把计算结果转换成十进制。
 当出现有些小数值转换成二进制后是无限循环的小数情况时，会发生精度丢失，因而再转换成十进制后得到的值与预期的结果不符。
-> 更详细解释，可参考: https://juejin.im/post/5cec1bcff265da1b8f1aa08f#heading-23
+> 更详细的资料，可参考: https://juejin.im/post/5cec1bcff265da1b8f1aa08f#heading-23
 ---
 2020-02-29
 # 20. 谈谈js中的原型和继承？
 原型与继承是js中非常核心的内容，不是三言两语就能说清楚的，需要时常翻阅，牢记，揣摩领会。
-> 更详细解释，可参考: https://github.com/mqyqingfeng/Blog
+> 更详细的资料，可参考: https://github.com/mqyqingfeng/Blog
 ---
 2020-03-01
 # 20. 谈谈js中的此法作用域和动态作用域？
@@ -463,7 +462,7 @@ sort方法是作用于原数组的，会对原数组排序，默认是将待排�
 JavaScript 采用词法作用域(lexical scoping)，也就是静态作用域。
 词法作用域，指的是函数的作用域在函数定义的时候就决定了。
 而与词法作用域相对的是动态作用域，函数的作用域是在函数调用的时候才决定的。
-> 更详细解释，可参考: https://github.com/mqyqingfeng/Blog/issues/3
+> 更详细的资料，可参考: https://github.com/mqyqingfeng/Blog/issues/3
 ---
 2020-03-02
 # 21.什么是闭包？闭包有哪些优点？哪些缺点？
@@ -479,9 +478,16 @@ ECMAScript中，闭包指的是：
 在代码中引用了自由变量。
 优点：1.能将一个变量长期保存在内存中；2.避免全局变量污染；3.私有成员的存在
 缺点：1.常驻内存，增加能存使用量；2.使用不当会造成内存泄露；
-> 更详细解释，可参考: https://github.com/mqyqingfeng/Blog/issues/3
-
-
+> 更详细的资料，可参考: https://github.com/mqyqingfeng/Blog/issues/3
+---
+2020-03-08
+# 22.前端模块化规范了解哪些？
+在前端工程化进程中主要产生了四种规范，分别是：CommonJS规范，AMD规范，CMD规范，ES6标准。这其中：
+* CommonJS规范主要用于服务端编程，加载模块是同步的，这并不适合在浏览器环境，因为同步意味着阻塞加载，浏览器资源是异步加载的，因此有了AMD CMD解决方案。
+* AMD规范在浏览器环境中异步加载模块，而且可以并行加载多个模块。不过，AMD规范开发成本高，代码的阅读和书写比较困难，模块定义方式的语义不顺畅。
+* CMD规范与AMD规范很相似，都用于浏览器编程，依赖就近，延迟执行，可以很容易在Node.js中运行。不过，依赖SPM 打包，模块的加载逻辑偏重。
+* ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。
+> 更详细的资料，可参考: https://github.com/ljianshu/Blog/issues/48
 
 
 
