@@ -489,8 +489,62 @@ ECMAScript中，闭包指的是：
 * ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。
 > 更详细的资料，可参考: https://github.com/ljianshu/Blog/issues/48
 ---
+2020-03-09
+# 23.CommonJS和ES6模块化有什么区别，设计一个方法，让CommonJS导出的模块也能改变其内部变量？
+有两个区别：
+* CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+* CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+来看一个例子:
+```javascript
+// lib.js
+var counter = 3;
+function incCounter() {
+  counter++;
+}
+module.exports = {
+  counter: counter,
+  incCounter: incCounter,
+};
+```
+上面代码输出内部变量counter和改写这个变量的内部方法incCounter。
+来看执行结果：
+```javascript
+// main.js
+var counter = require('./lib').counter;
+var incCounter = require('./lib').incCounter;
+
+console.log(counter);  // 3
+incCounter();
+console.log(counter); // 3
+```
+我们的目标是要设计一个方法，使得CommonJS导出的模块也能改变其内部变量。使用函数将输出模块包装返回即可实现。
+```javascript
+var counter = 3;
+var counters = function () {
+    return counter;
+};
+
+function incCounter() {
+    counter++;
+    console.log(counter, 'jjj')
+}
+module.exports = {
+    counter: counters,
+    incCounter: incCounter,
+};
+// 执行结果：
+// main.js
+var counter = require('./test1').counter;
+var incCounter = require('./test1').incCounter;
+
+console.log(counter());  // 3
+incCounter();
+console.log(counter()); // 4
+```
+> 更详细的资料，可参考: https://github.com/ljianshu/Blog/issues/48
+---
 2020-03-11
-# 23.能否设计一个通过拖拽，然后交换位置的组件？
+# 24.能否设计一个通过拖拽，然后交换位置的组件？
 主要思路：1，触发拖拽开始事件的时候在datatransfer对象中记录此时被拖拽元素的id,在触发拖拽结束事件时，获取当前的DOM元素，即event.target,获取之前记录的元素document.getElmentById('id')。
 2，创建一个交换元素的方法，入参为两个dom元素a, b。在方法内部需要判断这两个入参之间的关系，若相等，则直接返回。获取这两个入参a,b的父节点，若与a同级的元素和b相等，则在a之前插入b，
 若与b同级的元素和a相等，则在b之前插入a。
