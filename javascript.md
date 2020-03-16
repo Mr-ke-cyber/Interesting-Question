@@ -551,9 +551,49 @@ console.log(counter()); // 4
 3，如果a元素包含了b，则在a的父元素插入b,b的父元素插入a。
 4，如果都不满以上几种情况，则在b的父元素内插入a, a的父元素内插入b，核心api是insertBefore。
 > 更详细的资料，可参考: https://blog.csdn.net/qq_37339364/article/details/89352354
-
-
-
+---
+2020-03-16
+# 25.JSONP和ajax有什么区别，手写一个JSONP(promise版的)？
+相同点：都是请求一个url。
+不同点：ajax的核心是通过xmlHttpRequest获取内容；jsonp的核心则是动态添加<script>标签来调用服务器 提供的js脚本。
+手写JSONP如下：
+```javascript
+const JSONP = function (url, data) {
+    return new Promise((resolve, reject) => {
+        let flag = url.indexOf("?") > 0 ? '&' : '?';
+        let callbackName = `jsonpCB_${Date.now()}`;
+        url += `${flag}callback=${callbackName}`;
+        let node = document.createElement("script");
+        node.src = url;
+        if (data) {
+            for (let key of data) {
+                url += `&${key}=${data[key]}`;
+            }
+        }
+        window[callbackName] = result => {
+            delete window[callbackName];
+            document.body.removeChild(node);
+            if (result) {
+                resolve(result);
+            } else {
+                reject('no data');
+            }
+        };
+        node.addEventListener('error', () => {
+            delete window[callbackName];
+            document.body.removeChild(node);
+            reject('error');
+        }, false);
+        document.body.appendChild(node);
+    });
+};
+JSONP('http://192.168.0.103:8081/jsonp',{a:'t',b:'e'}).then((result) => {
+    console.log(result);
+}).catch((error) => {
+    console.log(error);
+});
+```
+> 更详细的资料，可参考: https://zhangguixu.github.io/2016/12/02/jsonp/
 
 
 
