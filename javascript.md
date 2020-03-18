@@ -564,12 +564,12 @@ const JSONP = function (url, data) {
         let callbackName = `jsonpCB_${Date.now()}`;
         url += `${flag}callback=${callbackName}`;
         let node = document.createElement("script");
-        node.src = url;
         if (data) {
             for (let key of data) {
                 url += `&${key}=${data[key]}`;
             }
         }
+        node.src = url;
         window[callbackName] = result => {
             delete window[callbackName];
             document.body.removeChild(node);
@@ -594,6 +594,32 @@ JSONP('http://192.168.0.103:8081/jsonp',{a:'t',b:'e'}).then((result) => {
 });
 ```
 > 更详细的资料，可参考: https://zhangguixu.github.io/2016/12/02/jsonp/
+2020-03-18
+# 26.instanceof的作用是什么，原理又是啥？
+MDN上是这样描述instanceof的：
+> instanceof 运算符用于测试构造函数的prototype属性是否出现在对象原型链中的任何位置    
+
+因而，instanceof其原理其实就是一个查找原型链的过程，回顾一下原型链的相关知识：
+1.所有 JavaScript 对象都有 __proto__ 属性，只有 Object.prototype.__proto__ === null ；
+2.构造函数的 prototype 属性指向它的原型对象，而构造函数实例的 __proto__ 属性也指向该原型对象；
+ > 更详细的资料，可参考: https://juejin.im/post/5cb3e7e0e51d456e896349d3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
