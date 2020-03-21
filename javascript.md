@@ -594,6 +594,7 @@ JSONP('http://192.168.0.103:8081/jsonp',{a:'t',b:'e'}).then((result) => {
 });
 ```
 > 更详细的资料，可参考: https://zhangguixu.github.io/2016/12/02/jsonp/
+---
 2020-03-18
 # 26.instanceof的作用是什么，原理又是啥？
 MDN上是这样描述instanceof的：
@@ -603,10 +604,34 @@ MDN上是这样描述instanceof的：
 1.所有 JavaScript 对象都有 __proto__ 属性，只有 Object.prototype.__proto__ === null ；
 2.构造函数的 prototype 属性指向它的原型对象，而构造函数实例的 __proto__ 属性也指向该原型对象；
  > 更详细的资料，可参考: https://juejin.im/post/5cb3e7e0e51d456e896349d3
-
-
-
-
+---
+2020-03-19
+# 27.自己实现一个instanceOf,并手写出来。
+```javascript
+const myInstance = function(target, origin) {
+      const proto = target.__proto__;
+      if (proto) {
+          if (origin.prototype === proto) {
+              return true;
+          } else {
+              return myInstance(proto, origin);
+          }
+      } else {
+          return false;
+      }
+};
+```
+---
+2020-03-20
+# 28.Promise.all如何控制并发数？
+promise并不是因为调用Promise.all才执行，而是在实例化promise对象的时候就执行了，在理解这一点的基础上，是实现控制并发数的限制，因而可以从promise实例化上下手。
+具体的思路可以总结为：
+####
+1.从array第1个元素开始，初始化promise对象，同时用一个executing数组保存正在执行的promise
+2.不断初始化promise，直到达到poolLimt
+3.使用Promise.race，获得executing中promise的执行情况，当有一个promise执行完毕，继续初始化promise并放入executing中
+4.所有promise都执行完了，调用Promise.all返回
+ > 更详细的资料，可参考: https://blog.csdn.net/weixin_33928137/article/details/88754909
 
 
 
