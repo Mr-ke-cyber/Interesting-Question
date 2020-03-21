@@ -626,15 +626,18 @@ const myInstance = function(target, origin) {
 # 28.Promise.all如何控制并发数？
 promise并不是因为调用Promise.all才执行，而是在实例化promise对象的时候就执行了，在理解这一点的基础上，是实现控制并发数的限制，因而可以从promise实例化上下手。
 具体的思路可以总结为：
-####
-1.从array第1个元素开始，初始化promise对象，同时用一个executing数组保存正在执行的promise
-2.不断初始化promise，直到达到poolLimt
-3.使用Promise.race，获得executing中promise的执行情况，当有一个promise执行完毕，继续初始化promise并放入executing中
-4.所有promise都执行完了，调用Promise.all返回
+1. 从array第1个元素开始，初始化promise对象，同时用一个executing数组保存正在执行的promise  
+2. 不断初始化promise，直到达到poolLimt
+3. 使用Promise.race，获得executing中promise的执行情况，当有一个promise执行完毕，继续初始化promise并放入executing中
+4. 所有promise都执行完了，调用Promise.all返回
  > 更详细的资料，可参考: https://blog.csdn.net/weixin_33928137/article/details/88754909
-
-
-
+---
+2020-03-21
+# 29.Javascript是单线程还是多线程？
+js是单线程，那么为什么它是单线程呢？这与它的用途有关。作为浏览器脚本语言，Javascript的主要用途是与用户互动，以及操作DOM。
+这决定了它只能是单线程，否则会带来很严重的同步问题。比如，假如JavaScript同时有两个线程，一个线程在某个某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？
+为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。
+ > 更详细的资料，可参考: https://www.cnblogs.com/keang001/p/11294388.html
 
 
 
