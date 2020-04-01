@@ -690,6 +690,10 @@ HTML5为<script>标签定义了async属性，这个属性与defer属性类似，
 2. script带async情况下，不会阻塞dom树构建，立即异步加载，加载好以后立即执行；
 3. script带defer情况下， 不会阻塞dom树构建，立即异步加载。加载好以后，如果dom树还没构建好，则等dom树解析好以后再执行；如果dom树已经准备好，则立即执行。
  > 参考: https://www.cnblogs.com/caizhenbo/p/6679478.html
+ https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded
+---
+2020-04-01
+# 35. 防抖和节流的原理及应用场景？
 
 
 
