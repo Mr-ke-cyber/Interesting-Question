@@ -689,14 +689,18 @@ HTML5为<script>标签定义了async属性，这个属性与defer属性类似，
 1. script没有defer和async情况下，会停止（阻塞）dom树构建，立即加载，并执行脚本；
 2. script带async情况下，不会阻塞dom树构建，立即异步加载，加载好以后立即执行；
 3. script带defer情况下， 不会阻塞dom树构建，立即异步加载。加载好以后，如果dom树还没构建好，则等dom树解析好以后再执行；如果dom树已经准备好，则立即执行。
- > 参考: https://www.cnblogs.com/caizhenbo/p/6679478.html
+ > 参考: https://www.cnblogs.com/caizhenbo/p/6679478.html  
  https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded
 ---
 2020-04-01
 # 35. 防抖和节流的原理及应用场景？
+防抖（debounce）的原理：不管事件触发频率有多高，一定在事件触发n秒之后才执行，如果你在一个事件触发的n秒内又触发了这个事件，就以新的事件的时间为起准，n秒后才执行，
+总之，触发完事件n秒内不再触发事件，n秒后再执行。
+应用场景：  窗口大小变化，调整样式； 搜索框，输入后1000毫秒再搜索；表单的验证，在输入1000毫秒后验证。  
 
-
-
+节流（throttle）的原理：不管事件触发频率多高，只在单位时间内执行一次。
+应用场景：   比如要监听计算滚动条位置的时候，不必每次都触发节流，可以降低计算的频率而不必去浪费资源；  做商品预览图的放大镜效果时，不必每次移动鼠标都计算位置。
+> 参考: https://www.codercto.com/a/35263.html
 
 
 
