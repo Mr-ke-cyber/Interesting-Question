@@ -153,6 +153,8 @@ String('11') === new String('11'); // false
 ----
 2020-01-06
  # 9.对Promise掌握有多少？可通过八段代码了解透彻。  
+ Promise是异步编程的一种解决方案：从语法上讲，promise是一个对象，从它可以获取异步操作的消息；从本意上讲，它是承诺，承诺它过一段时间会给你一个结果。promise有三种状态，pending(等待态)，fulfiled(成功态)，rejected(失败态)；
+ 状态一旦改变，就不会再变。创造promise实例后，它会立即执行。
  > 主要总结：  
  ①Promise是立即执行的，立即执行性。  
  ②Promise具备三种状态，pending/resolved/rejected。  
@@ -676,7 +678,18 @@ new操作符用来生成一个新的对象, 它后面必须跟上一个函数(�
 5. 必须使用new调用class。
 6. class内部无法重新类名。
  > 参考: https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/20
-
+---
+2020-03-31
+# 34. async和defer有什么区别？
+HTML 4.01为<script>标签定义了defer属性。这个属性表明脚本在执行时不会影响页面的构造。就是说，脚本会被延迟到整个页面都解析完毕后再运行。因为，在<script>元素中
+设置defer属性，相当于告诉浏览器立即下载，但延迟执行。  
+HTML5为<script>标签定义了async属性，这个属性与defer属性类似，都用于改变处理脚本的行为，同样与defer类似，async只适用于外部脚本文件，并告诉浏览器立即下载文件。但与defer
+不同的是，标记为async的脚本并不保证按照指定他们的先后顺序执行。
+总结：
+1. script没有defer和async情况下，会停止（阻塞）dom树构建，立即加载，并执行脚本；
+2. script带async情况下，不会阻塞dom树构建，立即异步加载，加载好以后立即执行；
+3. script带defer情况下， 不会阻塞dom树构建，立即异步加载。加载好以后，如果dom树还没构建好，则等dom树解析好以后再执行；如果dom树已经准备好，则立即执行。
+ > 参考: https://www.cnblogs.com/caizhenbo/p/6679478.html
 
 
 
