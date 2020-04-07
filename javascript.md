@@ -701,7 +701,7 @@ HTML5为<script>标签定义了async属性，这个属性与defer属性类似，
 > 参考: https://www.codercto.com/a/35263.html
 ---
 2020-04-07
-#36. 为什么我们要使用async/await ?
+# 36. 为什么我们要使用async/await ?
 async 可以看做是promise与Generator的语法糖，但对其做了改进，是一个优秀的异步解决方案。内置执行器，Generator的执行必须依靠执行器，但async的执行器与生俱来，使得async函数与普通函数的调用别无二致。
 更好的语义化，返回值是promise，对开发者友好。
 我们知道，promise的出现主要是为了解决回调地狱，而async/await的优势就在于处理then式调用链。在少量then式调用的时候优势不明显，当多个then式调用的时候，其优势就凸显了。
