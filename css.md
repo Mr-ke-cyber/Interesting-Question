@@ -15,7 +15,24 @@
 2. 在GPU渲染字体会导致抗锯齿（-webkit-font-smoothing）无效。这是因为GPU和CPU的算法不同。因此如果你不在动画结束的时候关闭硬件加速，会产生字体模糊。
 > 参考: https://www.w3cplus.com/css3/introduction-to-hardware-acceleration-css-animations.html   
 https://blog.csdn.net/u010377383/article/details/100548769
-
+----
+2020-04-09
+# 2. css加载会阻塞DOM树的解析和渲染吗？
+看到这个问题的第一反应是css显然会阻塞渲染的，但是不会阻塞DOM树的解析，如果css阻塞DOM树的解析，那它还拿什么渲染？渲染个锤子？
+经搜集资料查证，发现得分情况对待：
+1. DOM解析和CSS解析是两个并行的进程，所以这也解释了为什么CSS加载不会阻塞DOM的解析。
+2. 然而，由于Render Tree是依赖于DOM Tree和CSSOM Tree的，所以他必须等待到CSSOM Tree构建完成，也就是CSS资源加载完成(或者CSS资源加载失败)后，才能开始渲染。因此，CSS加载是会阻塞Dom的渲染的。
+3. 由于js可能会操作之前的Dom节点和css样式，因此浏览器会维持html中css和js的顺序。因此，样式表会在后面的js执行前先加载执行完毕。所以css会阻塞后面js的执行。
+   
+   **DOMContentLoaded**
+补充说明一下DOMContentLoaded这个事件，对于浏览器来说，页面加载主要有两个事件，一个是DOMContentLoaded，另一个是onLoad。
+而onLoad没什么好说的，就是等待页面的所有资源都加载完成才会触发，这些资源包括css、js、图片视频等。而DOMContentLoaded，顾名思义，
+就是当页面的内容解析完成后，则触发该事件。那么，正如我们上面讨论过的，css会阻塞Dom渲染和js执行，而js会阻塞Dom解析。
+所以：
+1. 如果页面中同时存在css和js，并且存在js在css后面，则DOMContentLoaded事件会在css加载完后才执行。
+2. 其他情况下，DOMContentLoaded都不会等待css加载，并且DOMContentLoaded事件也不会等待图片、视频等其他资源加载。
+> 参考
+https://zhuanlan.zhihu.com/p/43282197
 
 
 
