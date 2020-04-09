@@ -33,8 +33,14 @@ https://blog.csdn.net/u010377383/article/details/100548769
 2. 其他情况下，DOMContentLoaded都不会等待css加载，并且DOMContentLoaded事件也不会等待图片、视频等其他资源加载。
 > 参考
 https://zhuanlan.zhihu.com/p/43282197
-
-
-
-
+---
+2020-04-10
+# 3.为什么不推荐使用@import?
+这个问题，说实话有点偏，对于用惯了现代前端开发技术的人来说，大多一头雾水。经研究：
+1. Link属于html标签，而@import是CSS中提供的；
+2. 在页面加载的时候，link会同时被加载，而@import引用的CSS会在页面加载完成后才会加载引用的CSS，会引起重绘，降低页面性能；
+3. @import只有在ie5以上才可以被识别，而link是html标签，不存在浏览器兼容性问题；
+4. Link引入样式的权重大于@import的引用（@import是将引用的样式导入到当前的页面中）
+> 参考
+https://blog.csdn.net/qq_41813695/article/details/80489601
 
