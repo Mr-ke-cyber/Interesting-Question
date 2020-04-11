@@ -729,4 +729,31 @@ https://blog.csdn.net/weixin_34212189/article/details/91383653
 3. 图片请求不占用Ajax请求限额；
 4. 不会阻塞页面加载，影响用户的体验，只要new Image对象就好了，一般情况下也不需要append到DOM中，通过它的onerror和onload事件来检测发送状态；
 > 参考: https://www.cnblogs.com/wangxi01/p/11224534.html
+---
+2020-04-12
+# 38. 如何正确判断this的指向？
+如果用一句话说明 this 的指向，那么即是: 谁调用它，this 就指向谁。
+但是仅通过这句话，我们很多时候并不能准确判断 this 的指向。因此我们需要借助一些规则去帮助自己：
+this 的指向可以按照以下顺序判断:
+*全局环境中的 this*
+浏览器环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象 window;
+node 环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部），this 都是空对象 {};
+*是否是 new 绑定*
+如果是 new 绑定，并且构造函数中没有返回 function 或者是 object，那么 this 指向这个新对象。
+*函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么this绑定的就是指定的对象【归结为显式绑定】*   
+如果 call,apply 或者 bind 传入的第一个参数值是 undefined 或者 null，严格模式下 this 的值为传入的值 null /undefined。
+非严格模式下，实际应用的默认绑定规则，this 指向全局对象(node环境为global，浏览器环境为window)
+*箭头函数的情况*
+箭头函数没有自己的this，继承外层上下文绑定的this。
+> 参考: https://github.com/YvetteLau/Blog/issues/35
+
+
+
+
+
+
+
+
+
+
 
