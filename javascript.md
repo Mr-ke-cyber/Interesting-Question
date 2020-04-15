@@ -754,7 +754,12 @@ node 环境：无论是否在严格模式下，在全局执行环境中（在任
 
 箭头函数没有自己的this，继承外层上下文绑定的this。
 > 参考: https://github.com/YvetteLau/Blog/issues/35
-
+---
+2020-04-15
+# 39. module.exports和exports有什么区别？
+module.exports和exports一开始都是一个空对象{}，实际上，这两个对象指向同一块内存。这也就是说module.exports和exports是等价的
+（有个前提：不去改变它们指向的内存地址）。
+> 参考: https://www.jianshu.com/p/beafd9ac9656
 
 
 
