@@ -433,7 +433,7 @@ Symbol.keyFor(s2) // undefined
 ----
 2020-01-30
 # 17. js中Number.MAX_SAFE_INTEGER和Number.MAX_VALUE有什么区别?这两个参数的作用体现在哪里？
-Number.MAX_SAFE_INTEGER 是可以在计算中安全使用的最大整数，由于js用的是IEEE754双精度浮点，可安全地表示[-2^53+1, 2^53+1]这个范围，对应的还有Number.MIN_SAFE_INTEGER。
+Number.MAX_SAFE_INTEGER 是可以在计算中安全使用的最大整数，由于js用的是IEEE754双精度浮点，可安全地表示[-2^53+1, 2^53-1]这个范围，对应的还有Number.MIN_SAFE_INTEGER。
 以上两个常量是ES6引入的，在此之前只能作为事实标准。  
 例如， Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2 为true - 任何大于MAX_SAFE_INTEGER的整数都不能始终准确地在内存中表示。所有位用于表示数字的数字。
 另一方面，Number.MAX_VALUE 是使用双精度浮点表示表示的最大数字。一般来说，数字越大，准确度越低。  
