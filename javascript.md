@@ -253,7 +253,7 @@ if(true) {
 手写一个深拷贝如下：
 ````javascript
 function clone(target, map = new WeakMap()) {
-    if (typeof target === 'object') {
+    if (typeof target === 'object' && type !== null) {  // null作为WeakMap的key会报错
         let cloneTarget = Array.isArray(target) ? [] : {};
         if (map.get(target)) {
             return map.get(target);
